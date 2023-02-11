@@ -1,8 +1,10 @@
 package com.example.fashiondaystestapp.data.models
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 
+@JsonClass(generateAdapter = true)
 data class ProductImageList(
-    @SerializedName("thumb") val thumb: ArrayList<String>,
-    @SerializedName("zoom") val zoom: ArrayList<String>
+    @Json(name = "thumb") val thumb: List<String>,
+    @Json(name = "zoom") val zoom: List<String>
 )

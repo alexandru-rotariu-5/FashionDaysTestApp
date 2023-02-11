@@ -8,6 +8,12 @@ class ProductRepository {
     private val productDataSource = ProductDataSource()
 
     suspend fun getProducts(): ProductsResponse? {
-        return productDataSource.getProducts()
+        val request = productDataSource.getProducts()
+
+        if (request.isSuccessful) {
+            return request.body()!!
+        }
+
+        return null
     }
 }

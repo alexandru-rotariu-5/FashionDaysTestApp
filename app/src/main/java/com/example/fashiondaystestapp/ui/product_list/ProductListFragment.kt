@@ -32,7 +32,7 @@ class ProductListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val productsObserver = Observer<ArrayList<ProductItem>> { newList ->
+        val productsObserver = Observer<List<ProductItem>> { newList ->
             productListAdapter.submitList(newList)
         }
 

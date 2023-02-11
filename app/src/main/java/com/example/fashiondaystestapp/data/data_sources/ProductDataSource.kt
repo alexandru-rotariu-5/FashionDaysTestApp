@@ -1,14 +1,15 @@
 package com.example.fashiondaystestapp.data.data_sources
 
 import com.example.fashiondaystestapp.data.models.ProductsResponse
-import com.example.fashiondaystestapp.data.network.ProductsAPI
-import com.example.fashiondaystestapp.data.network.RetrofitHelper
+import com.example.fashiondaystestapp.data.network.APIService
+import com.example.fashiondaystestapp.data.network.APIClient
+import retrofit2.Response
 
 class ProductDataSource {
 
-    private val productsAPI: ProductsAPI = RetrofitHelper.getInstance().create(ProductsAPI::class.java)
+    private val apiService = APIClient.retrofit.create(APIService::class.java)
 
-    suspend fun getProducts(): ProductsResponse {
-        return productsAPI.getProducts()
+    suspend fun getProducts(): Response<ProductsResponse> {
+        return apiService.getProducts()
     }
 }

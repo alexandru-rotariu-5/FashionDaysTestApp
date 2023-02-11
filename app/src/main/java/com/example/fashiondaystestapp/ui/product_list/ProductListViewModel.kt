@@ -12,8 +12,8 @@ class ProductListViewModel : ViewModel() {
 
     private val productRepository = ProductRepository()
 
-    private val _products = MutableLiveData<ArrayList<ProductItem>>()
-    val products: LiveData<ArrayList<ProductItem>> = _products
+    private val _products = MutableLiveData<List<ProductItem>>()
+    val products: LiveData<List<ProductItem>> = _products
 
     init {
         loadProducts()

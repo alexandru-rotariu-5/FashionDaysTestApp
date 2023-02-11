@@ -1,13 +1,15 @@
 package com.example.fashiondaystestapp.data.models
 
 import com.example.fashiondaystestapp.ui.models.ProductItem
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 
+@JsonClass(generateAdapter = true)
 data class ProductsResponse(
-    @SerializedName("products")
-    val products: ArrayList<Product>
+    @Json(name = "products")
+    val products: List<Product>
 ) {
-    fun toProductItemList() : ArrayList<ProductItem> {
+    fun toProductItemList() : List<ProductItem> {
         return ArrayList(products.map { p -> p.toProductItem() })
     }
 }
