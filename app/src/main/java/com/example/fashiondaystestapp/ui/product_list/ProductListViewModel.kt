@@ -7,10 +7,10 @@ import androidx.lifecycle.viewModelScope
 import com.example.fashiondaystestapp.data.repositories.ProductRepository
 import com.example.fashiondaystestapp.ui.models.ProductItem
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class ProductListViewModel : ViewModel() {
-
-    private val productRepository = ProductRepository()
+class ProductListViewModel @Inject constructor(private val productRepository: ProductRepository) :
+    ViewModel() {
 
     private val _products = MutableLiveData<List<ProductItem>>()
     val products: LiveData<List<ProductItem>> = _products

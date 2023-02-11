@@ -2,6 +2,7 @@ package com.example.fashiondaystestapp.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.fashiondaystestapp.App
 import com.example.fashiondaystestapp.R
 
 class MainActivity : AppCompatActivity() {

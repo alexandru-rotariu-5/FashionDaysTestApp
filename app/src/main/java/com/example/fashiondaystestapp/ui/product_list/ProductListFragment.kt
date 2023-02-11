@@ -8,15 +8,17 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.fashiondaystestapp.App
 import com.example.fashiondaystestapp.databinding.FragmentProductListBinding
 import com.example.fashiondaystestapp.ui.models.ProductItem
+import javax.inject.Inject
 
 class ProductListFragment : Fragment() {
 
     private var _binding: FragmentProductListBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: ProductListViewModel by viewModels()
+    @Inject lateinit var viewModel: ProductListViewModel
 
     private lateinit var productListAdapter: ProductListAdapter
 
@@ -26,6 +28,7 @@ class ProductListFragment : Fragment() {
     ): View {
         _binding = FragmentProductListBinding.inflate(inflater, container, false)
         setupRecyclerView()
+        (activity?.application as App).appComponent.inject(this)
         return binding.root
     }
 
