@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.fashiondaystestapp.R
 import com.example.fashiondaystestapp.ui.models.ProductItem
 
@@ -30,6 +31,9 @@ class ProductListAdapter :
         fun onBind(product: ProductItem) {
             productBrand.text = product.brand
             productName.text = product.name
+            Glide.with(productImage.context)
+                .load(product.imageUrl)
+                .into(productImage)
         }
     }
 
