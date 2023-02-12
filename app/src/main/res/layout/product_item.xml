@@ -5,9 +5,11 @@
     android:id="@+id/productContainer"
     android:layout_width="160dp"
     android:layout_height="240dp"
+    android:clickable="true"
     android:layout_margin="10dp"
     android:background="@drawable/bg_product"
-    android:elevation="8dp">
+    android:elevation="8dp"
+    android:focusable="true">
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -54,7 +54,6 @@ class ProductListFragment : Fragment() {
 
         productListAdapter = ProductListAdapter()
         productsRecyclerView.apply {
-//            layoutManager = GridLayoutManager(requireActivity(), 2)
             layoutManager = FlexboxLayoutManager(context).apply {
                 justifyContent = JustifyContent.CENTER
                 alignItems = AlignItems.CENTER
