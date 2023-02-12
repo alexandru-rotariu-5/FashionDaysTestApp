@@ -19,13 +19,17 @@ class ProductListViewModel @Inject constructor(private val productRepository: Pr
         loadProducts()
     }
 
-    private fun loadProducts() {
-
+    private fun loadProducts(callback: () -> Unit = {}) {
         viewModelScope.launch {
             val response = productRepository.getProducts()
             if (response != null) {
                 _products.value = response.toProductItemList()
+                callback()
             }
         }
+    }
+
+    fun updateProducts(callback: () -> Unit) {
+        loadProducts(callback)
     }
 }

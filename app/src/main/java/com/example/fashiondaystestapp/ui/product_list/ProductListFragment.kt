@@ -1,17 +1,18 @@
 package com.example.fashiondaystestapp.ui.product_list
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener
 import com.example.fashiondaystestapp.App
 import com.example.fashiondaystestapp.databinding.FragmentProductListBinding
 import com.example.fashiondaystestapp.ui.models.ProductItem
 import javax.inject.Inject
+
 
 class ProductListFragment : Fragment() {
 
@@ -28,6 +29,7 @@ class ProductListFragment : Fragment() {
     ): View {
         _binding = FragmentProductListBinding.inflate(inflater, container, false)
         setupRecyclerView()
+        setupSwipeRefresh()
         (activity?.application as App).appComponent.inject(this)
         return binding.root
     }
@@ -50,7 +52,16 @@ class ProductListFragment : Fragment() {
             layoutManager = GridLayoutManager(requireActivity(), 2)
             adapter = productListAdapter
         }
+    }
 
+    private fun setupSwipeRefresh() {
+        binding.swipeContainer.setOnRefreshListener {
+            viewModel.updateProducts(::stopSwipeRefresh)
+        }
+    }
+
+    private fun stopSwipeRefresh() {
+        binding.swipeContainer.isRefreshing = false
     }
 
     override fun onDestroyView() {
