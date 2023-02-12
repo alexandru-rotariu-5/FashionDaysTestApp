@@ -1,5 +1,6 @@
 package com.example.fashiondaystestapp.ui.product_list
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -23,6 +24,7 @@ class ProductListViewModel @Inject constructor(private val productRepository: Pr
         viewModelScope.launch {
             val response = productRepository.getProducts()
             if (response != null) {
+                Log.d("Products response", response.toProductItemList().toString())
                 _products.value = response.toProductItemList()
                 callback()
             }

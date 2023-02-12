@@ -11,6 +11,11 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener
 import com.example.fashiondaystestapp.App
 import com.example.fashiondaystestapp.databinding.FragmentProductListBinding
 import com.example.fashiondaystestapp.ui.models.ProductItem
+import com.google.android.flexbox.AlignItems
+import com.google.android.flexbox.FlexDirection
+import com.google.android.flexbox.FlexWrap
+import com.google.android.flexbox.FlexboxLayoutManager
+import com.google.android.flexbox.JustifyContent
 import javax.inject.Inject
 
 
@@ -49,7 +54,13 @@ class ProductListFragment : Fragment() {
 
         productListAdapter = ProductListAdapter()
         productsRecyclerView.apply {
-            layoutManager = GridLayoutManager(requireActivity(), 2)
+//            layoutManager = GridLayoutManager(requireActivity(), 2)
+            layoutManager = FlexboxLayoutManager(context).apply {
+                justifyContent = JustifyContent.CENTER
+                alignItems = AlignItems.CENTER
+                flexDirection = FlexDirection.ROW
+                flexWrap = FlexWrap.WRAP
+            }
             adapter = productListAdapter
         }
     }
